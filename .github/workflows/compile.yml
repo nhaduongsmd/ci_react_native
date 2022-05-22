@@ -5,19 +5,17 @@ on: [push]
 jobs:
   build:
 
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # - name: CocoaPod Install
-      #   run: pod install
-      # - name: Provisioning profile
-      #   run: fastlane codesigning keychain_password:${{ secrets.KEYCHAIN_PWD }} certificate_password:PWD_P12
-      # - name: Build
-      #   run: fastlane buildApp
-      # - name: Distribute
-      #   run: fastlane distribute app_id:${{ secrets.APP_ID }}
+      - name: set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
       - name: yarn install
         run: cd CIReactNativeDemo && yarn install
       - name: run_dev
