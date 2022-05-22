@@ -23,6 +23,10 @@ platform :android do
 
   desc "Submit a new Beta Build to Beta"
   lane :dev do
+    increment_version_number(
+      bump_type: "patch" # Automatically increment patch version number
+    )
+
     gradle(task: "clean assembleDebug")
 
     appcenter_upload(
