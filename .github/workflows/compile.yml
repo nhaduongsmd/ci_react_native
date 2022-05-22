@@ -19,8 +19,6 @@ jobs:
       # - name: Distribute
       #   run: fastlane distribute app_id:${{ secrets.APP_ID }}
       - name: yarn install
-        run: cd CIReactNativeDemo
-        run: yarn install
+        run: cd CIReactNativeDemo && yarn install
       - name: run_dev
-        run: cd android
-        run: fastlane dev
+        run: cd android && fastlane dev
