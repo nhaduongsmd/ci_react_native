@@ -21,4 +21,4 @@ jobs:
       - name: yarn install
         run: cd CIReactNativeDemo && yarn install
       - name: run_dev
-        run: cd android && fastlane dev
+        run: cd CIReactNativeDemo/android && fastlane dev
