@@ -40,7 +40,6 @@ jobs:
           name: Dependency android
           command: |
             cd CIReactNativeDemo/android
-            echo "sdk.dir=/home/circleci/android-sdk" | tee local.properties
             ./gradlew dependencies
       - run:
           name: Fastlane
