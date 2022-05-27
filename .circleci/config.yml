@@ -29,10 +29,9 @@ jobs:
           name: Dependency android
           command: |
             cd CIReactNativeDemo/android
+            echo "sdk.dir=/home/circleci/android-sdk" | tee local.properties
             ./gradlew dependencies
       - run:
-          environment:
-            ANDROID_SDK_ROOT: '/home/circleci/android-sdk'
           name: Fastlane
           command: |
             cd CIReactNativeDemo/android
