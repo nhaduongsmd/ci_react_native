@@ -31,6 +31,8 @@ jobs:
             cd CIReactNativeDemo/android
             ./gradlew dependencies
       - run:
+          environment:
+            ANDROID_SDK_ROOT: '/home/circleci/android-sdk'
           name: Fastlane
           command: |
             cd CIReactNativeDemo/android
