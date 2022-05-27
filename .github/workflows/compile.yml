@@ -1,0 +1,22 @@
+name: iOS CI Example
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
+      - name: yarn install
+        run: cd CIReactNativeDemo && yarn install
+      - name: run_dev
+        run: cd CIReactNativeDemo/android && fastlane dev
