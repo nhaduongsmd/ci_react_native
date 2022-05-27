@@ -25,7 +25,8 @@ jobs:
           command: |
             cd CIReactNativeDemo/android
             bundle install
-      - run: Dependency android
+      - run:
+          name: Dependency android
           command: |
             cd CIReactNativeDemo/android
             ./gradlew dependencies
