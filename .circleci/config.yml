@@ -11,14 +11,22 @@ jobs:
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: dev
+      ANDROID_SDK_ROOT: '/home/circleci/android-sdk'
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
-      - run:
-          name: fastlane
+      - run: 
+          name: Yarn Install
           command: |
             cd CIReactNativeDemo
             yarn install
-            cd android
+      - run: 
+          name: Install Gem Android
+          command: |
+            cd CIReactNativeDemo/android
             bundle install
+      - run:
+          name: Fastlane
+          command: |
+            cd CIReactNativeDemo/android
             bundle exec fastlane dev
