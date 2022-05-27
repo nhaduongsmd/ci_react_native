@@ -1,28 +1,28 @@
 version: 2.1
 
-machine:
-  environment:
-    ANDROID_HOME: "/usr/local/share/android-sdk"
-    ANDROID_SDK_HOME: "/usr/local/share/android-sdk"
-    ANDROID_SDK_ROOT: "/usr/local/share/android-sdk"
-dependencies:
-  override:
-    - brew tap caskroom/cask
-    - brew tap caskroom/versions
-    - brew cask install android-sdk
+# machine:
+#   environment:
+#     ANDROID_HOME: "/usr/local/share/android-sdk"
+#     ANDROID_SDK_HOME: "/usr/local/share/android-sdk"
+#     ANDROID_SDK_ROOT: "/usr/local/share/android-sdk"
+# dependencies:
+#   override:
+#     - brew tap caskroom/cask
+#     - brew tap caskroom/versions
+#     - brew cask install android-sdk
 
-orbs:
-  android: circleci/android@2.0
+# orbs:
+#   android: circleci/android@2.0
 
 jobs:
   build:
     macos:
       xcode: "13.2.1"
-    working_directory: /Users/distiller/project
+    # working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: dev
-      ANDROID_SDK_ROOT: '/home/circleci/android-sdk'
+      # ANDROID_SDK_ROOT: '/home/circleci/android-sdk'
     shell: /bin/bash --login -o pipefail
     steps:
       - checkout
