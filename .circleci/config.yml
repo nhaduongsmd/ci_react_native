@@ -27,6 +27,7 @@ jobs:
             bundle install
       - run: Dependency android
           command: |
+            cd CIReactNativeDemo/android
             ./gradlew dependencies
       - run:
           name: Fastlane
