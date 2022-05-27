@@ -1,7 +1,17 @@
 version: 2.1
 
+machine:
+  environment:
+    ANDROID_HOME: "/usr/local/share/android-sdk"
+    ANDROID_SDK_HOME: "/usr/local/share/android-sdk"
+    ANDROID_SDK_ROOT: "/usr/local/share/android-sdk"
+dependencies:
+  override:
+    - brew tap caskroom/cask
+    - brew tap caskroom/versions
+    - brew cask install android-sdk
+
 orbs:
-  ruby: circleci/ruby@1.2.0
   android: circleci/android@2.0
 
 jobs:
@@ -14,17 +24,8 @@ jobs:
       FASTLANE_LANE: dev
       ANDROID_SDK_ROOT: '/home/circleci/android-sdk'
     shell: /bin/bash --login -o pipefail
-    <<: *android_config
     steps:
       - checkout
-      - *restore_gradle_cache
-      - *restore_gems_cache
-      - *ruby_dependencies
-      - *create_keystore_properties
-      - *decode_android_key
-      - *android_dependencies
-      - *save_gradle_cache
-      - *save_gems_cache
       - run: 
           name: Yarn Install
           command: |
